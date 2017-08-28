@@ -15,7 +15,24 @@
             alert("保存模板失败:" + result.responseText);
         }
     });
+}
 
+function sendMaile() {
+    var fileContent = UE.getEditor('editor').getContent();
+    fileContent = fileContent.replace(/"/g, "&quot;");
+    $.ajax({
+        url: 'EditTest.aspx/SendMail',
+        contentType: 'application/json; charset=utf-8',
+        datatype: 'json',
+        type: 'POST',
+        data: '{fileContent:"' + fileContent + '"}', //参数
+        success: function (result) {//成功后执行的方法
+            alert("邮件发送成功！"); // 后台返回值
+        },
+        error: function (result) {//失败执行的方法
+            alert("邮件发送失败:" + result.responseText);
+        }
+    });
 }
 
 function LoadTemplate() {

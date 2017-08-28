@@ -46,10 +46,10 @@
                 <button id="deleteText" class="btn-block" onclick="createEditor()">删除模板</button>
             </div>
             <div class="col-lg-2 col-md-push-4">
-                <button id="sendMail" class="btn-block" onclick="deleteEditor()">发送生产通知</button>
+                <button id="sendMail" class="btn-block" onclick="sendMaile()">发送生产通知</button>
             </div>
             <div class="col-lg-2 col-md-push-4">
-                <button id="cancle" class="btn-block" onclick="deleteEditor()">取消发送通知</button>
+                <button id="cancle" class="btn-block" onclick="sendMaile()">取消发送通知</button>
             </div>
         </div>
     </div>

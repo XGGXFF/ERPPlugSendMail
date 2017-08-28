@@ -31,5 +31,15 @@ namespace SendMailTest
             result= template.LoadTemplate(templeId);
             return result;
         }
+
+        [WebMethod]
+        public static void SendMail(string fileContent)
+        {
+            string touser = "714907920@qq.com";
+            string title = "邮件推送测试";
+            fileContent = fileContent.Replace("&quot;", "\"");
+            MaileUtil.SendMail(touser, title, fileContent);
+            Console.ReadKey();
+        }
     }
 }
