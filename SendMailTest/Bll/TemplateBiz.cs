@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SendMailTest.Dal;
+using SendMailTest.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace SendMailTest.Comment
+namespace SendMailTest.Bll
 {
-    public class Template
+    public class TemplateBiz
     {
         /// <summary>
         /// 保存模板
@@ -27,6 +29,11 @@ namespace SendMailTest.Comment
             }
 
             return true;
+        }
+        
+        public List<Template> GetAllTemplate()
+        {
+            return new TemplateDal().GetAllTemplate();
         }
 
         public string LoadTemplate(int id)

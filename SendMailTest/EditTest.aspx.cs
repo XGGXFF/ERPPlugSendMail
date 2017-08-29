@@ -1,4 +1,5 @@
-﻿using SendMailTest.Comment;
+﻿using SendMailTest.Bll;
+using SendMailTest.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace SendMailTest
         [WebMethod]
         public static void SaveTemplate(string fileName, string fileContent)
         {
-            Template template = new Template();
+            TemplateBiz template = new TemplateBiz();
             template.SaveTemplate(fileName, fileContent);
         }
 
@@ -27,8 +28,8 @@ namespace SendMailTest
         public static string LoadTemplate(int templeId)
         {
             var result = string.Empty;
-            Template template = new Template();
-            result= template.LoadTemplate(templeId);
+            TemplateBiz template = new TemplateBiz();
+            result = template.LoadTemplate(templeId);
             return result;
         }
 
@@ -38,8 +39,14 @@ namespace SendMailTest
             string touser = "714907920@qq.com";
             string title = "邮件推送测试";
             fileContent = fileContent.Replace("&quot;", "\"");
-            MaileUtil.SendMail(touser, title, fileContent);
-            Console.ReadKey();
+            MaileBiz.SendMail(touser, title, fileContent);
+        }
+
+        [WebMethod]
+        public static List<Template> GetAllTemplate()
+        {
+            TemplateBiz template = new TemplateBiz();
+            return template.GetAllTemplate();
         }
     }
 }

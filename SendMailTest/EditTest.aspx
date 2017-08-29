@@ -14,6 +14,7 @@
     <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script type="text/javascript" charset="utf-8" src="scripts/TemplateJS.js"> </script>
 
     <style type="text/css">
@@ -28,15 +29,13 @@
             <div class="col-lg-3">模板选择</div>
             <div class="col-lg-2 col-md-push-7">
                 <select class="selectpicker" onchange="LoadTemplate()" id="templateId">
-                    <option value="1">模板1</option>
-                    <option value="2">模板2</option>
-                    <option value="3">模板3</option>
+                    <option v-for="temp in templatelist" v-bind:value="temp.templateID">{{temp.templateName}}</option>
                 </select>
             </div>
         </div>
 
         <script id="editor" type="text/plain" style="height: 500px;"></script>
-
+        
         <br />
         <div class="container" style="width: 1024px;">
             <div class="col-lg-2 col-md-push-4">
@@ -49,7 +48,7 @@
                 <button id="sendMail" class="btn-block" onclick="sendMaile()">发送生产通知</button>
             </div>
             <div class="col-lg-2 col-md-push-4">
-                <button id="cancle" class="btn-block" onclick="sendMaile()">取消发送通知</button>
+                <button id="cancle" class="btn-block">取消发送通知</button>
             </div>
         </div>
     </div>
@@ -74,6 +73,9 @@
             $("#editorText").show();
         }
 
+        $(document).ready(function () {
+            templateList();
+        });
     </script>
 </body>
 </html>

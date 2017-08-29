@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Web;
 
-namespace SendMailTest.Comment
+namespace SendMailTest.Bll
 {
-    public class MaileUtil
+    public class MaileBiz
     {
         public static void SendMail(string mailAddress, string mailTitle, string mailContent)
         {
